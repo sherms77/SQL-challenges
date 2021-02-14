@@ -1,0 +1,15 @@
+INPUT
+
+NOTES
+130221: None of these are working because I need to exclude duplicates from the answer.
+
+FAILED - ORACLE
+SELECT city FROM station WHERE id %2=0;
+SELECT * FROM (SELECT city, ROWNUM AS id FROM station) WHERE id(rn, 2) = 0;
+SELECT city FROM station WHERE id % 0;
+SELECT city FROM station WHERE id % 2;
+SELECT city FROM station WHERE id / 2 = 0;
+
+FAILED - MySQL
+SELECT city FROM station WHERE id %2=0;
+SELECT city FROM station WHERE id = %2=0;
