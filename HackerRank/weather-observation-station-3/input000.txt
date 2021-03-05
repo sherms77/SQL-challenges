@@ -1,7 +1,18 @@
+STEPS
+1.Query list of city names: SELECT city FROM station; - DONE
+2.With even ID numbers only: TBC. UPTO HERE.
+3.Exclude duplicates: TBC.
+
 INPUT
+SELECT city FROM station WHERE id - HOW TO GET EVEN ID NUMBERS?
 
 NOTES
 130221: None of these are working because I need to exclude duplicates from the answer.
+060321: How do I get even id numbers? Modulus does not work? Ie: %2=0.
+060321: Refer to SQL Bolt lesson 9. Mathematical functions. UPTO HERE.
+
+TEST CODE
+SELECT city FROM station where id > 0; # works - out: city names with id > 0.
 
 FAILED - ORACLE
 SELECT city FROM station WHERE id %2=0;
