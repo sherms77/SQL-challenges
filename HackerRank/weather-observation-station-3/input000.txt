@@ -1,26 +1,47 @@
 STEPS
 1.Query list of city names: SELECT city FROM station; - DONE
-2.With even ID numbers only: TBC. UPTO HERE.
-3.Exclude duplicates: TBC.
+2.Look up Oracle db syntax: Math operations - DONE
+2.With even ID numbers only: MOD(id, 2)=0; - DONE
+3.Exclude duplicates: DISTINCT - DONE
 
 INPUT
-SELECT city FROM station WHERE id - HOW TO GET EVEN ID NUMBERS?
+1.SELECT city FROM station; - WORKS 
+2.SELECT DISTINCT city FROM station; - WORKS, APPEARS TO EXCLUDE DUPLICATES 
+3.SELECT DISTINCT city FROM station WHERE MOD(id, 2)=0; - WORKS
 
 NOTES
 130221: None of these are working because I need to exclude duplicates from the answer.
 060321: How do I get even id numbers? Modulus does not work? Ie: %2=0.
-060321: Refer to SQL Bolt lesson 9. Mathematical functions. UPTO HERE.
+060321: Refer to SQL Bolt lesson 9 (in notebook). Mathematical functions.
+060321: Example from SQL Bolt lesson 9: SELECT title, year FROM movies WHERE year %2=0;
+060321: As mentioned before, id %2=0 does not work. Unsure if its to do with Oracle db?
+070321: SQL Bolt lesson 4. Filtering - exclude duplicates using DISTINCT. 
+070321: Refer to links 1 and 2. Used relevant syntax for Oracle db.
+070321: Finished challenge today.
+
+LINKS
+1.070321: https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions088.htm 
+2.070321: http://dba-oracle.com/t_ora_00920_invalid_relational_operator.htm
 
 TEST CODE
 SELECT city FROM station where id > 0; # works - out: city names with id > 0.
 
-FAILED - ORACLE
-SELECT city FROM station WHERE id %2=0;
-SELECT * FROM (SELECT city, ROWNUM AS id FROM station) WHERE id(rn, 2) = 0;
-SELECT city FROM station WHERE id % 0;
-SELECT city FROM station WHERE id % 2;
-SELECT city FROM station WHERE id / 2 = 0;
+FAILED | ORACLE
 
-FAILED - MySQL
-SELECT city FROM station WHERE id %2=0;
-SELECT city FROM station WHERE id = %2=0;
+070321: 
+    SELECT city FROM station WHERE MOD(id, 2); # refer to link 1 - oracle docs
+    SELECT DISTINCT city FROM station WHERE id % 2=0; - NO OUTPUT
+    SELECT DISTINCT city FROM station WHERE MOD(id, 2); - NO OUTPUT, INVALID RELATIONAL OPERATOR.
+
+
+130221: 
+    SELECT city FROM station WHERE id %2=0;
+    SELECT * FROM (SELECT city, ROWNUM AS id FROM station) WHERE id(rn, 2) = 0;
+    SELECT city FROM station WHERE id % 0;
+    SELECT city FROM station WHERE id % 2;
+    SELECT city FROM station WHERE id / 2 = 0;
+
+FAILED | MySQL
+130221:
+    SELECT city FROM station WHERE id %2=0;
+    SELECT city FROM station WHERE id = %2=0;
