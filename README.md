@@ -6,6 +6,6 @@ HackerRank.
 
 # Status
 - No active challenges.
-- Last challenge: Weather observation station 4.
-- Finished: 6 June 2021.
+- Last challenge: Weather observation station 5.
+- Finished: 16 June 2021.
 

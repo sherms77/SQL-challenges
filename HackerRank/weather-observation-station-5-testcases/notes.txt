@@ -1,0 +1,125 @@
+PROBLEM
+Query the two cities in STATION with the shortest and longest CITY names, as well as their lengths (i.e: the number of characters in the name). If there is more than one smallest or largest city choose the one that comes first when ordered alphabetically.
+
+LOGIC
+1.Shortest and longest city names.
+2.Their respective lengths.
+3.List aplhabetically.
+
+NOTES
+link: https://www.oracletutorial.com/oracle-aggregate-functions/oracle-min/
+160621: Finished - submitted and passed. Refer to input file for correct code.
+
+Try to use min() and max()?
+
+FAILED CODE - DESCENDING ORDER
+
+160621
+/*NOT CORRECT BUT BEST WORKING CODE SO FAR.*/
+SELECT city, LENGTH(city) FROM station
+WHERE (LENGTH(city) = 3 OR LENGTH(city) = 21) AND ROWNUM < 3
+ORDER BY LENGTH(city) DESC;
+
+
+160621
+SELECT city, LENGTH(city) FROM station
+WHERE (LENGTH(city) = 3 OR LENGTH(city) = 21) AND ROWNUM < 3
+ORDER BY LENGTH(city) DESC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) = 3 OR LENGTH(city) = 21
+ORDER BY LENGTH(city) DESC, city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) = 3 OR LENGTH(city) = 21 ROWNUM = 2
+ORDER BY LENGTH(city) DESC, city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) = 3 OR LENGTH(city) = 21, ROWNUM = 2
+ORDER BY LENGTH(city) DESC, city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) = 3 OR LENGTH(city) = 21
+ORDER BY LENGTH(city) DESC, city ASC
+FETCH NEXT 2 ROWS ONLY;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) = 3 OR LENGTH(city) = 21, city LIKE 'a%',
+ORDER BY city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE (LENGTH(city) = 3 OR LENGTH(city) = 21) AND ORDER BY city ASC;
+
+150621
+/*gives output of cities with smallest (3) and largets (21) lengths but does not select only two based on alpha order. ie: should only show one city for smallest, based on what comes first alphabetically and the same for the largest*/
+SELECT city, LENGTH(city) FROM station
+WHERE (LENGTH(city) = 3 OR LENGTH(city) = 21)
+ORDER BY city ASC;
+
+150621
+/*produces output but wrong answer*/
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) <=3 OR LENGTH(city) > 20
+ORDER BY city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) <= 3 AND WHERE LENGTH(city) > 10
+ORDER BY city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) <= 3 AND LENGTH(city) > 10
+ORDER BY city ASC;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE 3 < LENGTH(city) < 10;
+
+150621
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) > 20 AND LENGTH(city) < 3
+ORDER BY city ASC;
+
+150621
+/*produces city with a name length > 20* in ascending order/
+SELECT city, LENGTH(city) FROM station
+WHERE LENGTH(city) > 20
+ORDER BY city ASC;
+
+150621
+SELECT city, LENGTH(city)
+FROM station
+WHERE LENGTH(city) IS > 20
+ORDER BY city ASC;
+
+150621
+/*shows cities, length of names in descending order by the length of the name*/
+SELECT city, LENGTH(city)
+FROM station
+ORDER BY LENGTH(city) DESC;
+
+150621
+/*shows cities, length of names in ascending order*/
+SELECT city, LENGTH(city)
+FROM station
+ORDER BY city ASC;
+
+150621
+SELECT city 
+LEN(city) city_name_length
+FROM station;
+
+150621
+SELECT city FROM station 
+LEN(city)
+ORDER BY city ASC;
+
+150621
+SELECT city FROM station; /*lists cities only*/
